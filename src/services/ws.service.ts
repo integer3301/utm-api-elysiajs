@@ -38,7 +38,9 @@ export class WebSocketService {
         const info = await infoRes.json();
         const sid = Math.random().toString(36).substring(2, 10);
         const wsUrl = `ws://${ip}:${port}/websocket/000/${sid}/websocket`;
-
+     console.log(
+        `${prefix} info получено: websocket=${info.websocket}, cookie_needed=${info.cookie_needed}`
+      );
         const ws = new WebSocket(wsUrl);
         connectionState.ws = ws; // Сохраняем ссылку на сокет
 

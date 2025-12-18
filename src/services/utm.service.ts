@@ -31,9 +31,20 @@ export class UtmService {
     );
   }
 
-  /// crud операции
   async getAllUtms(): Promise<Utm[]> {
-    return await this.repo.findAll();
+    const dbServers = await this.repo.findAll();
+  
+    return dbServers.map((server) => {
+    const dynamicData = this.cache.get(server.id) || {
+      status: "offline",
+      documents: [], 
+    };
+    return {
+      ...server,      
+      ...dynamicData, 
+    };
+  });
+
   }
 
   async getUtmById(id: number): Promise<Utm> {
