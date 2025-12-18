@@ -4,6 +4,9 @@ import fs from "fs";
 import path from "path";
 
 export class SQLiteDB {
+  static query(arg0: string) {
+      throw new Error("Method not implemented.");
+  }
   private db: Database;
 
   constructor() {

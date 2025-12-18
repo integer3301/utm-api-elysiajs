@@ -3,8 +3,16 @@
 # dependencies
 /node_modules
 /.pnp
+.bun/
 .pnp.js
-
+# База данных и логи
+data/
+drizzle/
+*.db
+*.db-shm
+*.db-wal
+combined.log
+error.log
 # testing
 /coverage
 

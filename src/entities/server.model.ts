@@ -1,12 +1,11 @@
 
-// server.model.ts
 export class ServerModels {
   id: number;
   name: string;
   location?: string;
   ip: string;
   port: number;
-  createdAt: string; // В SQLite даты обычно хранятся как строки (ISO)
+  createdAt: string; 
   updatedAt: string;
 
   constructor(data: any) {
