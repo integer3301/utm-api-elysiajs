@@ -1,10 +1,13 @@
 import { Elysia } from "elysia";
 import { logger } from "@bogeychan/elysia-logger";
+import cors from "@elysiajs/cors";
 
 import { UtmController } from "./controllers/utm.controllers";
-import { WebSocketService } from "./services/ws.service";
 import { UtmRepository } from "./repositories/utm.repository";
-import cors from "@elysiajs/cors";
+import { UtmService } from "./services/utm.service";
+
+const utmRepository = new UtmRepository();
+const utmService = new UtmService(utmRepository);
 
 const app = new Elysia()
   .use(
@@ -15,7 +18,7 @@ const app = new Elysia()
     })
   )
   .use(logger())
-  .group("/api/v1", (app) => app.use(UtmController))
+  .group("/api/v1", (app) => app.use(UtmController(utmService)))
 
   .listen(3000);
 
